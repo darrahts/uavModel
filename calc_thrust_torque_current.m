@@ -1,4 +1,4 @@
-function [thrust, torque, current] = fcn(voltage)
+function [thrust, torque, current] = calc_thrust_torque_current(voltage)
 %
 % input: voltage
 %
