@@ -1,4 +1,4 @@
-function rotational_acceleration = rotational_acceleration_calculation(thrust, torque)
+function angular_acceleration = angular_acceleration_calculation(thrust, torque)
 %
 % inputs: torque vector
 %         thrust vector
@@ -10,7 +10,7 @@ function rotational_acceleration = rotational_acceleration_calculation(thrust, t
 moments = [0 0 0];
 
 % rotational acceleration about each axis
-rotational_acceleration = [0 0 0];
+angular_acceleration = [0 0 0];
 
 % moments of inertia empirically derived from sample data
 moments_I = [.003, .003, .007];
@@ -26,5 +26,5 @@ moments(2) = (thrust(3) + thrust(2))*.237/2 - (thrust(1)+thrust(4))*.237/2;
 moments(3) = (torque(4) + torque(2)) - (torque(1)  + torque(3));
 
 for i=1:3
-    rotational_acceleration(i) = moments(i) / moments_I(i);
+    angular_acceleration(i) = moments(i) / moments_I(i);
 end
