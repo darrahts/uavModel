@@ -1,4 +1,4 @@
-function angular_acceleration = angular_acceleration_calculation(thrust, torque)
+function angular_acceleration = calc_angular_acceleration(thrust, torque)
 %
 % inputs: torque vector
 %         thrust vector
