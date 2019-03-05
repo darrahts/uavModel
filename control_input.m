@@ -23,13 +23,13 @@ throttle_diff = 100 - throttle;
 
 % throttle is most important, so excess is for pitch/roll/yaw
 if(xyz_input > throttle_diff)
-    bias = xyz_input/throttle_diff; 
+    bias = xyz_input - throttle_diff; 
 end
 
 % if the input is greater than throttle, set the bias to input-throttle
 if(xyz_input > (throttle))
-    if(bias < (xyz_input/throttle))
-        bias = xyz_input/throttle;
+    if(bias < (xyz_input - throttle))
+        bias = xyz_input - throttle;
     end
 end
 
@@ -38,15 +38,15 @@ bias = 2*bias/3;
 
 %update the input commands 
 if (bias ~= 0.0)
-    pitch = pitch*bias;
-    roll = roll*bias;
-    yaw = yaw*bias;
+    pitch = pitch - bias;
+    roll = roll - bias;
+    yaw = yaw - bias;
 end
 
-motor_voltage = [(throttle - (pitch + roll + yaw )/2)*BATT_V/100
-                 (throttle - (pitch - roll - yaw )/2)*BATT_V/100
-                 (throttle + (pitch + roll - yaw )/2)*BATT_V/100
-                 (throttle + (pitch - roll + yaw )/2)*BATT_V/100];
+motor_voltage = [(throttle - pitch/2 - roll/2 - yaw/2)*BATT_V/100
+                 (throttle - pitch/2 + roll/2 + yaw/2)*BATT_V/100
+                 (throttle + pitch/2 + roll/2 - yaw/2)*BATT_V/100
+                 (throttle + pitch/2 - roll/2 + yaw/2)*BATT_V/100];
 
 
 
