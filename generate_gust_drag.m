@@ -13,7 +13,7 @@ rho = 1.225;
 coef_d = 1.0;
 
 for i=1:3
-    drag(i) = -.5*rho*gusts(i)^2*areas(i)*coef_d;
+    drag(i) = .5*rho*gusts(i)^2*areas(i)*coef_d;
     if(gusts(i)>0)
         drag(i) = drag(i) * -1;
     end   
