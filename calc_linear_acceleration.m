@@ -18,16 +18,16 @@ areas = [.0197, .0197, .0512];
 
 linear_acceleration = [0 0 0];
 force = [0 0 0];
-xyz_thrust = [0 0 0];
+xyz_thrust = [0;0;0];
 drag = [0 0 0];
 
 % trigonometric functions for calculating pitch,roll,yaw (x,y,z) thrust 
-xyz_thrust(1) = sin(theta(2))*cos(theta(1))*sum(thrust);
-xyz_thrust(2) = sin(theta(1))*cos(theta(2))*sum(thrust);
-xyz_thrust(3) = cos(theta(1))*cos(theta(2))*sum(thrust);
+xyz_thrust(1,1) = sin(theta(2))*cos(theta(1))*sum(thrust);
+xyz_thrust(2,1) = sin(theta(1))*cos(theta(2))*sum(thrust);
+xyz_thrust(3,1) = cos(theta(1))*cos(theta(2))*sum(thrust);
 
 % angular position and magnitude on the pitch-roll (x,y) plane
-angular_pos = atan2(xyz_thrust(1), xyz_thrust(2));
+angular_pos =-atan2(xyz_thrust(1), xyz_thrust(2));
 angular_mag = sqrt(xyz_thrust(1)^2 + xyz_thrust(2)^2);
 
 % if the drone is pointed upwards, x and y thrust uses + theta(3) (z)
@@ -44,9 +44,9 @@ for i=1:3
     drag(i) = .5*rho*linear_velocity(i)^2* areas(i)*coef_d;
     % if the drone is going backward (w.r.t its local coordinate system)
     if (linear_velocity(i) < 0)
-        force(i) = xyz_thrust(i) - disturbance(i) + drag(i);
+        force(i) = xyz_thrust(i) - disturbances(i) + drag(i);
     else
-        force(i) = xyz_thrust(i) - disturbance(i) - drag(i);
+        force(i) = xyz_thrust(i) - disturbances(i) - drag(i);
     end
     % account for gravity in the z direction
     if(i == 3)
