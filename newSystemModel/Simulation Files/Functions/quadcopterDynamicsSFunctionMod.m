@@ -395,9 +395,13 @@ function InitializeConditions(block)
 IC = block.DialogPrm(2).Data;
 
 % IC.P, IC.Q, IC.R are in deg/s ... convert to rad/s
-P = IC.P*pi/180; Q = IC.Q*pi/180; R = IC.R*pi/180; 
+P = IC.P*pi/180; 
+Q = IC.Q*pi/180; 
+R = IC.R*pi/180; 
 % IC.Phi, IC.The, IC.Psi are in deg ... convert to rads
-Phi = IC.Phi*pi/180; The = IC.The*pi/180; Psi = IC.Psi*pi/180;
+Phi = IC.Phi*pi/180;
+The = IC.The*pi/180; 
+Psi = IC.Psi*pi/180;
 U = IC.U; V = IC.V; W = IC.W; 
 X = IC.X; Y = IC.Y; Z = IC.Z;
 
