@@ -234,12 +234,12 @@ function Update(block)
     x_hat(3)=min(1.05,max(-0.05,x_hat(3)));
     x_hat(2) = min(1,max(-1,x_hat(2)));
 
-    % error cov measurement update, use hager method to ensure positive
-    % semidefinite
+    % error cov measurement update
     sigma_x = sigma_x - K*sigma_y*K';
     [~,S,V] = svd(sigma_x);
+    % hager method to ensure positive semidefinite
     HH = V*S*V';
-    sigma_x = (sigma_x + sigma_x' + HH + HH')/4; % Help maintain robustness
+    sigma_x = (sigma_x + sigma_x' + HH + HH')/4;
 
     % Q-bump code
     if r^2>1*sigma_y, % bad voltage estimate by 2-SigmaX, bump Q 
