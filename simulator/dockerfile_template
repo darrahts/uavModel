@@ -1,0 +1,24 @@
+# args
+ARG OS_VERSION=16.04
+
+# fundamental
+FROM ubuntu:${OS_VERSION}
+
+# metadata
+LABEL creator: "darrahts"
+
+# install gazebo
+RUN apt-get update && apt-get install wget curl -y
+RUN curl -sSL http://get.gazebosim.org | sh
+
+# cleanup
+RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+# ports
+#EXPOSE 80
+
+ENV USER=darrahts
+ENV SHELL=/bin/bash
+ENV LOGNAME=darrahts
+
+ENTRYPOINT [ "sh" ] 

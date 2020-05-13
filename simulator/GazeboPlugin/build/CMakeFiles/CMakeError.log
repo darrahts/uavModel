@@ -1,0 +1,55 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_ba018/fast"
+/usr/bin/make -f CMakeFiles/cmTC_ba018.dir/build.make CMakeFiles/cmTC_ba018.dir/build
+make[1]: Entering directory '/home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_ba018.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -Wall  -O3 -march=native     -o CMakeFiles/cmTC_ba018.dir/CheckSymbolExists.c.o   -c /home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_ba018
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_ba018.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall  -O3 -march=native      -rdynamic CMakeFiles/cmTC_ba018.dir/CheckSymbolExists.c.o  -o cmTC_ba018 
+CMakeFiles/cmTC_ba018.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text.startup+0x3): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_ba018.dir/build.make:97: recipe for target 'cmTC_ba018' failed
+make[1]: *** [cmTC_ba018] Error 1
+make[1]: Leaving directory '/home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_ba018/fast' failed
+make: *** [cmTC_ba018/fast] Error 2
+
+File /home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_72994/fast"
+/usr/bin/make -f CMakeFiles/cmTC_72994.dir/build.make CMakeFiles/cmTC_72994.dir/build
+make[1]: Entering directory '/home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_72994.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_72994.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_72994
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_72994.dir/link.txt --verbose=1
+/usr/bin/cc   -Wall  -O3 -march=native  -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_72994.dir/CheckFunctionExists.c.o  -o cmTC_72994 -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_72994.dir/build.make:97: recipe for target 'cmTC_72994' failed
+make[1]: *** [cmTC_72994] Error 1
+make[1]: Leaving directory '/home/darrahts/Dropbox/uavmodel/simulator/GazeboPlugin/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_72994/fast' failed
+make: *** [cmTC_72994/fast] Error 2
+
+
